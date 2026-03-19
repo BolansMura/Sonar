@@ -1,31 +1,38 @@
 package com.example;
 
-/**
- * Простое приложение Hello World
- */
+import java.util.*;
+
 public class App {
     
     public static void main(String[] args) {
-        System.out.println(getHelloMessage());
+        System.out.println(getMessage());
+        
+        // Бесполезная переменная (Code Smell)
+        int x = 5;
+        
+        // Пустой блок catch (Ошибка)
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            // Пустой catch - это плохо!
+        }
     }
     
-    /**
-     * Возвращает приветственное сообщение
-     * @return строка с приветствием
-     */
-    public static String getHelloMessage() {
+    public static String getMessage() {
         return "Hello, World!";
     }
     
-    /**
-     * Возвращает персонализированное приветствие
-     * @param name имя пользователя
-     * @return приветствие с именем
-     */
-    public static String getPersonalizedMessage(String name) {
-        if (name == null || name.isEmpty()) {
-            return getHelloMessage();
+    // Метод с длинным именем и без JavaDoc (Code Smell)
+    public static String getVeryLongAndComplicatedMessageThatShouldBeSimplified() {
+        return "Hello from CI/CD!";
+    }
+    
+    // Метод с магическим числом (Code Smell)
+    public static void waitForIt() {
+        try {
+            Thread.sleep(1000); // Магическое число 1000
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        return "Hello, " + name + "!";
     }
 }
